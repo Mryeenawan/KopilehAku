@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Coffee delivery tray</title>
+  <desc id="desc">Illustration of hot and iced coffee cups prepared for delivery.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff6e8"/>
+      <stop offset="1" stop-color="#dceee8"/>
+    </linearGradient>
+    <linearGradient id="tray" x1="0" x2="1">
+      <stop offset="0" stop-color="#7a4a2d"/>
+      <stop offset="1" stop-color="#2d1b14"/>
+    </linearGradient>
+    <linearGradient id="iced" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f9efe0"/>
+      <stop offset=".34" stop-color="#c98b5b"/>
+      <stop offset=".62" stop-color="#6b3d25"/>
+      <stop offset="1" stop-color="#2d1b14"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="26" stdDeviation="22" flood-color="#3b2115" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="900" height="700" rx="42" fill="url(#bg)"/>
+  <path d="M80 555c102 45 220 65 356 59 137-6 276-39 384-96v99H80z" fill="#4b8f7a" opacity=".15"/>
+  <circle cx="718" cy="120" r="74" fill="#e6a93d" opacity=".28"/>
+  <path d="M675 210c41-52 113-59 160-23 24 18 37 43 41 69-43-34-91-48-145-42-30 3-55 13-76 28 4-11 10-22 20-32z" fill="#4b8f7a" opacity=".28"/>
+  <g filter="url(#shadow)">
+    <ellipse cx="496" cy="559" rx="318" ry="58" fill="#2d1b14" opacity=".18"/>
+    <path d="M151 447h606c34 0 58 31 49 64l-8 31c-7 25-30 43-56 43H178c-26 0-49-18-56-43l-8-31c-9-33 15-64 49-64z" fill="url(#tray)"/>
+    <path d="M166 444h580c24 0 43 19 43 43v7H123v-7c0-24 19-43 43-43z" fill="#9b6440"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M235 238h119l-20 247H255z" fill="#f7eee2"/>
+    <path d="M253 290h84l-12 165h-60z" fill="#5a321f"/>
+    <path d="M222 213h145v35H222z" fill="#2d1b14"/>
+    <path d="M242 188h105v31H242z" fill="#f7eee2"/>
+    <path d="M262 304h55" stroke="#fff6e8" stroke-width="10" stroke-linecap="round" opacity=".65"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M395 190h132l-18 296h-96z" fill="#f8fbfb" opacity=".92"/>
+    <path d="M412 246h96l-10 214h-75z" fill="url(#iced)"/>
+    <path d="M386 164h150v33H386z" fill="#2d1b14"/>
+    <path d="M423 119h28l21 53h-28z" fill="#2d1b14"/>
+    <circle cx="443" cy="309" r="13" fill="#f8fbfb" opacity=".5"/>
+    <circle cx="482" cy="348" r="10" fill="#f8fbfb" opacity=".45"/>
+    <circle cx="458" cy="396" r="12" fill="#f8fbfb" opacity=".42"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M568 260h121l-17 226h-88z" fill="#fff8ed"/>
+    <path d="M585 316h87l-9 138h-68z" fill="#d19658"/>
+    <path d="M555 235h147v34H555z" fill="#2d1b14"/>
+    <path d="M582 212h93v30h-93z" fill="#fff8ed"/>
+    <path d="M591 327c26 18 49 18 74 0" fill="none" stroke="#fff7ea" stroke-width="13" stroke-linecap="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M662 353h93c22 0 40 18 40 40v96H622v-96c0-22 18-40 40-40z" fill="#183f38"/>
+    <path d="M661 353c0-46 23-76 48-76s48 30 48 76" fill="none" stroke="#183f38" stroke-width="20" stroke-linecap="round"/>
+    <rect x="646" y="397" width="125" height="49" rx="10" fill="#f5d8a8"/>
+    <circle cx="709" cy="421" r="18" fill="#dc6b4d"/>
+  </g>
+  <g fill="none" stroke="#f5d8a8" stroke-width="8" stroke-linecap="round" opacity=".75">
+    <path d="M245 150c-16-20 15-31 0-51"/>
+    <path d="M302 148c-14-18 13-31-1-49"/>
+    <path d="M609 188c-12-17 11-26 0-43"/>
+  </g>
+</svg>
