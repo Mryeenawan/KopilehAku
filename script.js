@@ -1,6 +1,7 @@
 const WHATSAPP_NUMBER = "";
 
 const form = document.querySelector("#orderForm");
+const menuGrid = document.querySelector("#menuGrid");
 const coffeeSelect = document.querySelector("#coffeeSelect");
 const quantityInput = document.querySelector("#quantityInput");
 const deliveryArea = document.querySelector("#deliveryArea");
@@ -17,6 +18,46 @@ const whatsappLink = document.querySelector("#whatsappLink");
 const mobileCartCount = document.querySelector("#mobileCartCount");
 
 const cart = [];
+
+const MENU_ITEMS = [
+  {
+    name: "Cappuccino",
+    price: 8,
+    art: "cappuccino",
+    badge: "Hot favorite",
+    label: "Classic foam",
+    description: "Foamy espresso, balanced and classic.",
+    tags: ["Bold", "Creamy"],
+    featured: true,
+  },
+  {
+    name: "Latte",
+    price: 8.5,
+    art: "latte",
+    badge: "Smooth daily cup",
+    label: "Milk coffee",
+    description: "Smooth milk coffee for an easy daily cup.",
+    tags: ["Mellow", "Milky"],
+  },
+  {
+    name: "Buttercreme Latte",
+    price: 10,
+    art: "butter",
+    badge: "Signature",
+    label: "Creamy treat",
+    description: "Creamy, rich, and slightly dessert-like.",
+    tags: ["Rich", "Sweet"],
+  },
+  {
+    name: "Vietnam Coffee",
+    price: 9.5,
+    art: "vietnam",
+    badge: "Strong pick",
+    label: "Condensed finish",
+    description: "Strong coffee with a sweet condensed finish.",
+    tags: ["Strong", "Sweet"],
+  },
+];
 
 const money = new Intl.NumberFormat("en-MY", {
   style: "currency",
@@ -39,6 +80,34 @@ function escapeHtml(value) {
 
 function selectedOptionNumber(select, key) {
   return Number(select.selectedOptions[0].dataset[key] || 0);
+}
+
+function renderMenu() {
+  menuGrid.innerHTML = MENU_ITEMS.map(
+    (item) => `
+      <article class="menu-card${item.featured ? " featured" : ""}" data-item="${escapeHtml(item.name)}" data-price="${item.price.toFixed(2)}">
+        <div class="drink-art ${escapeHtml(item.art)}">
+          <span class="drink-temp">${escapeHtml(item.badge)}</span>
+        </div>
+        <div>
+          <p class="drink-label">${escapeHtml(item.label)}</p>
+          <h3>${escapeHtml(item.name)}</h3>
+          <p>${escapeHtml(item.description)}</p>
+        </div>
+        <div class="taste-row">
+          ${item.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
+        </div>
+        <div class="menu-card-bottom">
+          <strong>${money.format(item.price)}</strong>
+          <a class="mini-btn" href="#order" data-menu-pick="${escapeHtml(item.name)}">Add</a>
+        </div>
+      </article>
+    `,
+  ).join("");
+
+  coffeeSelect.innerHTML = MENU_ITEMS.map(
+    (item) => `<option value="${escapeHtml(item.name)}" data-price="${item.price.toFixed(2)}">${escapeHtml(item.name)} - ${money.format(item.price)}</option>`,
+  ).join("");
 }
 
 function currentDrink() {
@@ -215,10 +284,11 @@ cartItems.addEventListener("click", (event) => {
   renderCart();
 });
 
-document.querySelectorAll("[data-menu-pick]").forEach((button) => {
-  button.addEventListener("click", () => {
-    coffeeSelect.value = button.dataset.menuPick;
-  });
+menuGrid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-menu-pick]");
+  if (!button) return;
+
+  coffeeSelect.value = button.dataset.menuPick;
 });
 
 ["change", "input"].forEach((eventName) => {
@@ -238,4 +308,5 @@ form.addEventListener("submit", (event) => {
   updateDraftLink();
 });
 
+renderMenu();
 renderCart();

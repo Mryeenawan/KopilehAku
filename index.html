@@ -78,80 +78,7 @@
         </div>
       </section>
 
-      <section class="menu-grid" aria-label="Coffee menu">
-        <article class="menu-card featured" data-item="Cappuccino" data-price="8.00">
-          <div class="drink-art cappuccino">
-            <span class="drink-temp">Hot favorite</span>
-          </div>
-          <div>
-            <p class="drink-label">Classic foam</p>
-            <h3>Cappuccino</h3>
-            <p>Foamy espresso, balanced and classic.</p>
-          </div>
-          <div class="taste-row">
-            <span>Bold</span>
-            <span>Creamy</span>
-          </div>
-          <div class="menu-card-bottom">
-            <strong>RM8.00</strong>
-            <a class="mini-btn" href="#order" data-menu-pick="Cappuccino">Add</a>
-          </div>
-        </article>
-        <article class="menu-card" data-item="Latte" data-price="8.50">
-          <div class="drink-art latte">
-            <span class="drink-temp">Smooth daily cup</span>
-          </div>
-          <div>
-            <p class="drink-label">Milk coffee</p>
-            <h3>Latte</h3>
-            <p>Smooth milk coffee for an easy daily cup.</p>
-          </div>
-          <div class="taste-row">
-            <span>Mellow</span>
-            <span>Milky</span>
-          </div>
-          <div class="menu-card-bottom">
-            <strong>RM8.50</strong>
-            <a class="mini-btn" href="#order" data-menu-pick="Latte">Add</a>
-          </div>
-        </article>
-        <article class="menu-card" data-item="Buttercreme Latte" data-price="10.00">
-          <div class="drink-art butter">
-            <span class="drink-temp">Signature</span>
-          </div>
-          <div>
-            <p class="drink-label">Creamy treat</p>
-            <h3>Buttercreme Latte</h3>
-            <p>Creamy, rich, and slightly dessert-like.</p>
-          </div>
-          <div class="taste-row">
-            <span>Rich</span>
-            <span>Sweet</span>
-          </div>
-          <div class="menu-card-bottom">
-            <strong>RM10.00</strong>
-            <a class="mini-btn" href="#order" data-menu-pick="Buttercreme Latte">Add</a>
-          </div>
-        </article>
-        <article class="menu-card" data-item="Vietnam Coffee" data-price="9.50">
-          <div class="drink-art vietnam">
-            <span class="drink-temp">Strong pick</span>
-          </div>
-          <div>
-            <p class="drink-label">Condensed finish</p>
-            <h3>Vietnam Coffee</h3>
-            <p>Strong coffee with a sweet condensed finish.</p>
-          </div>
-          <div class="taste-row">
-            <span>Strong</span>
-            <span>Sweet</span>
-          </div>
-          <div class="menu-card-bottom">
-            <strong>RM9.50</strong>
-            <a class="mini-btn" href="#order" data-menu-pick="Vietnam Coffee">Add</a>
-          </div>
-        </article>
-      </section>
+      <section class="menu-grid" id="menuGrid" aria-label="Coffee menu"></section>
 
       <section class="delivery-band" id="delivery">
         <div>
@@ -178,12 +105,7 @@
 
           <label class="field">
             <span>Coffee</span>
-            <select id="coffeeSelect" required>
-              <option value="Cappuccino" data-price="8.00">Cappuccino - RM8.00</option>
-              <option value="Latte" data-price="8.50">Latte - RM8.50</option>
-              <option value="Buttercreme Latte" data-price="10.00">Buttercreme Latte - RM10.00</option>
-              <option value="Vietnam Coffee" data-price="9.50">Vietnam Coffee - RM9.50</option>
-            </select>
+            <select id="coffeeSelect" required></select>
           </label>
 
           <fieldset class="choice-group">
