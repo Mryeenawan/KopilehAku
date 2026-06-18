@@ -6,8 +6,16 @@
     <title>Kopi Leh Aku | Coffee Delivery Bintulu</title>
     <meta
       name="description"
-      content="Test website for coffee delivery around Bintulu. Order cappuccino, latte, buttercreme latte, or Vietnamese coffee hot or cold."
+      content="Coffee delivery around Bintulu. Order cappuccino, latte, buttercreme latte, or Vietnamese coffee hot or cold by WhatsApp."
     />
+    <meta property="og:title" content="Kopi Leh Aku | Coffee Delivery Bintulu" />
+    <meta
+      property="og:description"
+      content="Fresh coffee delivery around Bintulu with hot and cold drinks, sweetness choices, and WhatsApp ordering."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#2c1b14" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,6 +36,7 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#menu">Menu</a>
         <a href="#delivery">Delivery</a>
+        <a href="#faq">FAQ</a>
         <a href="#order">Order</a>
       </nav>
     </header>
@@ -35,14 +44,14 @@
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Testing website only</p>
+          <p class="eyebrow">Fresh coffee to your door</p>
           <h1>Coffee delivery around Bintulu, brewed for busy days.</h1>
           <p class="hero-text">
-            Add a few cups to your cart, choose hot or cold, set sweetness, and prepare a WhatsApp order draft for
-            manual testing.
+            Choose your drink, set it hot or cold, adjust sweetness, and send your order through WhatsApp for
+            confirmation.
           </p>
           <div class="hero-actions">
-            <a class="primary-btn" href="#order">Start order</a>
+            <a class="primary-btn" href="#order">Order now</a>
             <a class="secondary-btn" href="#menu">View menu</a>
           </div>
         </div>
@@ -57,12 +66,12 @@
           <strong>Bintulu area</strong>
         </div>
         <div>
-          <span>Mode</span>
-          <strong>GitHub test</strong>
+          <span>Delivery time</span>
+          <strong>30 - 45 minutes</strong>
         </div>
         <div>
-          <span>Payment</span>
-          <strong>Not connected yet</strong>
+          <span>Order channel</span>
+          <strong>WhatsApp confirm</strong>
         </div>
       </section>
 
@@ -74,7 +83,7 @@
         <div class="menu-highlights" aria-label="Menu highlights">
           <span>Hot or cold</span>
           <span>Sweetness choice</span>
-          <span>Manual WhatsApp test</span>
+          <span>WhatsApp order</span>
         </div>
       </section>
 
@@ -82,24 +91,48 @@
 
       <section class="delivery-band" id="delivery">
         <div>
-          <p class="eyebrow">Delivery note</p>
-          <h2>Built for local testing first.</h2>
+          <p class="eyebrow">Delivery info</p>
+          <h2>Simple local delivery with clear confirmation.</h2>
           <p>
-            This version collects a test order summary only. It does not process payment, stock, rider dispatch, or
-            business operations yet.
+            Orders are confirmed through WhatsApp before preparation. Delivery fee depends on your selected Bintulu
+            area and may be adjusted for locations outside the listed zones.
           </p>
         </div>
         <ul class="delivery-list">
           <li><span>Hours</span><strong>8:00 AM - 6:00 PM</strong></li>
           <li><span>Estimated arrival</span><strong>30 - 45 minutes</strong></li>
-          <li><span>Order method</span><strong>Manual WhatsApp test</strong></li>
+          <li><span>Payment</span><strong>Cash or transfer after confirmation</strong></li>
         </ul>
+      </section>
+
+      <section class="steps-section" aria-label="How ordering works">
+        <div class="section-heading compact">
+          <p class="eyebrow">How it works</p>
+          <h2>Order in three quick steps.</h2>
+        </div>
+        <div class="steps-grid">
+          <article>
+            <span>1</span>
+            <h3>Build your cart</h3>
+            <p>Choose drinks, quantity, temperature, sweetness, and add-ons.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Send to WhatsApp</h3>
+            <p>Your order details are prepared in a WhatsApp message for confirmation.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Confirm delivery</h3>
+            <p>We confirm availability, final fee, payment method, and estimated arrival.</p>
+          </article>
+        </div>
       </section>
 
       <section class="order-layout" id="order">
         <form class="order-panel" id="orderForm">
           <div class="section-heading compact">
-            <p class="eyebrow">Test order</p>
+            <p class="eyebrow">Place order</p>
             <h2>Build your cart</h2>
           </div>
 
@@ -169,6 +202,11 @@
           </label>
 
           <label class="field">
+            <span>Phone number</span>
+            <input id="customerPhone" type="tel" placeholder="Example: 0123456789" required />
+          </label>
+
+          <label class="field">
             <span>Delivery area</span>
             <select id="deliveryArea" required>
               <option value="Bintulu Town" data-fee="3.00">Bintulu Town - RM3.00</option>
@@ -176,6 +214,15 @@
               <option value="Medan Jaya" data-fee="4.00">Medan Jaya - RM4.00</option>
               <option value="Kidurong" data-fee="6.00">Kidurong - RM6.00</option>
               <option value="Other Bintulu Area" data-fee="0.00">Other Bintulu Area - confirm first</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Payment preference</span>
+            <select id="paymentMethod" required>
+              <option value="Cash on delivery">Cash on delivery</option>
+              <option value="Bank transfer">Bank transfer</option>
+              <option value="Touch 'n Go eWallet">Touch 'n Go eWallet</option>
             </select>
           </label>
 
@@ -189,20 +236,45 @@
             <textarea id="noteInput" rows="3" placeholder="Gate code, delivery time, or extra message"></textarea>
           </label>
 
-          <button class="primary-btn full" type="submit">Confirm test order</button>
+          <button class="primary-btn full" type="submit">Prepare WhatsApp order</button>
         </form>
 
         <aside class="summary-panel" aria-live="polite">
           <div class="summary-top">
             <p class="eyebrow">Order preview</p>
-            <span class="pill">No payment</span>
+            <span class="pill">Confirm first</span>
           </div>
           <div id="summaryContent" class="summary-content">
-            Select a coffee and fill in the form to preview the test order.
+            Add drinks to your cart and fill in your delivery details to preview the order.
           </div>
-          <a id="whatsappLink" class="secondary-btn full disabled" href="#" aria-disabled="true">Create WhatsApp draft</a>
-          <p class="summary-note">Set your WhatsApp number later in <strong>script.js</strong> when ready.</p>
+          <a id="whatsappLink" class="secondary-btn full disabled" href="#" aria-disabled="true">Send order on WhatsApp</a>
+          <p class="summary-note">Final preparation and delivery fee are confirmed in WhatsApp before payment.</p>
         </aside>
+      </section>
+
+      <section class="faq-section" id="faq">
+        <div class="section-heading compact">
+          <p class="eyebrow">Before you order</p>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <div class="faq-grid">
+          <article>
+            <h3>Can I order hot or cold?</h3>
+            <p>Yes. Every drink can be prepared hot or cold.</p>
+          </article>
+          <article>
+            <h3>When do I pay?</h3>
+            <p>Payment is arranged after your order is confirmed on WhatsApp.</p>
+          </article>
+          <article>
+            <h3>What if my area is not listed?</h3>
+            <p>Select “Other Bintulu Area” and we will confirm the delivery fee before preparing your order.</p>
+          </article>
+          <article>
+            <h3>Can I request less sweet?</h3>
+            <p>Yes. Choose normal sweet, less sweet, or no sugar before adding the drink to cart.</p>
+          </article>
+        </div>
       </section>
 
       <a class="mobile-order-bar" href="#order">
@@ -212,8 +284,14 @@
     </main>
 
     <footer class="site-footer">
-      <strong>Kopi Leh Aku</strong>
-      <span>Prototype site for GitHub testing. Not yet open for business.</span>
+      <div>
+        <strong>Kopi Leh Aku</strong>
+        <span>Coffee delivery around Bintulu</span>
+      </div>
+      <div>
+        <span>Open daily, 8:00 AM - 6:00 PM</span>
+        <a href="#order">Order by WhatsApp</a>
+      </div>
     </footer>
 
     <script src="script.js"></script>

@@ -1,8 +1,8 @@
 # Kopi Leh Aku
 
-Prototype website for coffee delivery testing around Bintulu.
+Coffee delivery website for Kopi Leh Aku around Bintulu.
 
-This is a static GitHub Pages-ready site. It has no backend, payment gateway, rider dispatch, stock management, or real order database yet.
+This is a static GitHub Pages-ready site. Orders are prepared as WhatsApp messages for manual confirmation.
 
 ## Menu
 
@@ -20,7 +20,21 @@ Each menu item can be selected as hot or cold, with sweetness and simple add-on 
 - Extra milk and no-straw options
 - Bintulu delivery area fee estimate
 - Customer name, address, and note fields
-- WhatsApp draft message for manual testing
+- WhatsApp draft message for manual confirmation
+
+## Before Public Launch
+
+Update these business details before sharing widely:
+
+- Set the real WhatsApp number in `script.js`:
+  ```js
+  whatsappNumber: "60XXXXXXXXX",
+  ```
+- Confirm drink prices in `MENU_ITEMS`.
+- Confirm delivery fees in `index.html`.
+- Confirm opening hours in the page copy and `BUSINESS` settings.
+- Replace illustration assets with real product photos if available.
+- Test the full order flow on mobile.
 
 ## Test Locally
 

@@ -1,4 +1,9 @@
-const WHATSAPP_NUMBER = "";
+const BUSINESS = {
+  name: "Kopi Leh Aku",
+  whatsappNumber: "",
+  hours: "8:00 AM - 6:00 PM",
+  deliveryEstimate: "30 - 45 minutes",
+};
 
 const form = document.querySelector("#orderForm");
 const menuGrid = document.querySelector("#menuGrid");
@@ -6,8 +11,10 @@ const coffeeSelect = document.querySelector("#coffeeSelect");
 const quantityInput = document.querySelector("#quantityInput");
 const deliveryArea = document.querySelector("#deliveryArea");
 const customerName = document.querySelector("#customerName");
+const customerPhone = document.querySelector("#customerPhone");
 const addressInput = document.querySelector("#addressInput");
 const noteInput = document.querySelector("#noteInput");
+const paymentMethod = document.querySelector("#paymentMethod");
 const extraMilk = document.querySelector("#extraMilk");
 const noStraw = document.querySelector("#noStraw");
 const addItemButton = document.querySelector("#addItemButton");
@@ -67,6 +74,12 @@ const money = new Intl.NumberFormat("en-MY", {
 function createId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
   return `item-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
+function createOrderCode() {
+  const datePart = new Date().toISOString().slice(2, 10).replaceAll("-", "");
+  const randomPart = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `KLA-${datePart}-${randomPart}`;
 }
 
 function escapeHtml(value) {
@@ -186,7 +199,7 @@ function renderCart() {
 
 function renderSummary(showCustomer = false) {
   if (!cart.length) {
-    summaryContent.textContent = "Add at least one drink to preview the test order.";
+    summaryContent.textContent = "Add at least one drink to preview the order.";
     whatsappLink.classList.add("disabled");
     whatsappLink.setAttribute("aria-disabled", "true");
     whatsappLink.href = "#";
@@ -197,9 +210,11 @@ function renderSummary(showCustomer = false) {
   const feeText = fee > 0 ? money.format(fee) : "Confirm first";
   const totalText = fee > 0 ? money.format(orderTotal()) : "Confirm delivery fee first";
   const customerRows = showCustomer
-      ? `
+    ? `
       <div class="summary-row"><span>Name</span><span>${escapeHtml(customerName.value.trim() || "-")}</span></div>
+      <div class="summary-row"><span>Phone</span><span>${escapeHtml(customerPhone.value.trim() || "-")}</span></div>
       <div class="summary-row"><span>Address</span><span>${escapeHtml(addressInput.value.trim() || "-")}</span></div>
+      <div class="summary-row"><span>Payment</span><span>${escapeHtml(paymentMethod.value)}</span></div>
     `
     : "";
   const noteRow =
@@ -220,6 +235,7 @@ function renderSummary(showCustomer = false) {
 }
 
 function createWhatsAppMessage() {
+  const orderCode = createOrderCode();
   const lines = cart.map((item, index) => {
     return `${index + 1}. ${item.quantity}x ${item.temperature} ${item.drink} (${item.sweetness}${
       item.addOns.length ? `, ${item.addOns.join(", ")}` : ""
@@ -228,7 +244,8 @@ function createWhatsAppMessage() {
   const totalText = deliveryFee() > 0 ? money.format(orderTotal()) : "Confirm delivery fee first";
 
   return [
-    "Hi Kopi Leh Aku, this is a test order from the website.",
+    `Hi ${BUSINESS.name}, I would like to place an order.`,
+    `Order code: ${orderCode}`,
     "",
     "Order:",
     ...lines,
@@ -236,12 +253,14 @@ function createWhatsAppMessage() {
     `Subtotal: ${money.format(cartSubtotal())}`,
     `Delivery area: ${deliveryArea.value}`,
     `Estimated total: ${totalText}`,
+    `Payment preference: ${paymentMethod.value}`,
     "",
     `Name: ${customerName.value.trim()}`,
+    `Phone: ${customerPhone.value.trim()}`,
     `Address: ${addressInput.value.trim()}`,
     noteInput.value.trim() ? `Note: ${noteInput.value.trim()}` : "",
     "",
-    "Testing only, not a real business order yet.",
+    "Please confirm availability, final delivery fee, and estimated arrival.",
   ]
     .filter((line) => line !== "")
     .join("\n");
@@ -249,11 +268,16 @@ function createWhatsAppMessage() {
 
 function updateDraftLink() {
   const message = createWhatsAppMessage();
-  const target = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}?text=` : "https://wa.me/?text=";
+  const target = BUSINESS.whatsappNumber ? `https://wa.me/${BUSINESS.whatsappNumber}?text=` : "https://wa.me/?text=";
 
   whatsappLink.href = `${target}${encodeURIComponent(message)}`;
   whatsappLink.classList.remove("disabled");
   whatsappLink.removeAttribute("aria-disabled");
+
+  if (!BUSINESS.whatsappNumber) {
+    whatsappLink.textContent = "Send order on WhatsApp";
+    whatsappLink.title = "Add your business WhatsApp number in script.js for direct ordering.";
+  }
 }
 
 function resetDrinkOptions() {

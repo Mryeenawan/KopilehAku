@@ -471,6 +471,58 @@ h3 {
   color: #fff9ef;
 }
 
+.steps-section,
+.faq-section {
+  padding: 84px clamp(18px, 4vw, 56px);
+}
+
+.steps-section {
+  background: #fffdfa;
+}
+
+.steps-grid,
+.faq-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.steps-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.faq-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.steps-grid article,
+.faq-grid article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  padding: 22px;
+  box-shadow: 0 14px 42px rgba(64, 35, 20, 0.06);
+}
+
+.steps-grid span {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: var(--coffee-dark);
+  color: #fff9ef;
+  font-weight: 900;
+}
+
+.steps-grid p,
+.faq-grid p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .order-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
@@ -704,14 +756,29 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   gap: 12px;
   padding: 28px clamp(18px, 4vw, 56px);
   border-top: 1px solid var(--line);
   color: var(--muted);
 }
 
-.site-footer strong {
+.site-footer div {
+  display: grid;
+  gap: 5px;
+}
+
+.site-footer div:last-child {
+  text-align: right;
+}
+
+.site-footer strong,
+.site-footer a {
   color: var(--coffee-dark);
+}
+
+.site-footer a {
+  font-weight: 800;
 }
 
 .mobile-order-bar {
@@ -721,7 +788,9 @@ textarea {
 @media (max-width: 1020px) {
   .hero,
   .delivery-band,
-  .order-layout {
+  .order-layout,
+  .steps-grid,
+  .faq-grid {
     grid-template-columns: 1fr;
   }
 
@@ -802,6 +871,11 @@ textarea {
     justify-content: center;
   }
 
+  .steps-section,
+  .faq-section {
+    padding: 62px 18px;
+  }
+
   .order-panel .section-heading,
   .order-panel .choice-group,
   .order-panel .full,
@@ -839,5 +913,10 @@ textarea {
   .mobile-order-bar span {
     color: var(--cream);
     font-weight: 700;
+  }
+
+  .site-footer,
+  .site-footer div:last-child {
+    text-align: left;
   }
 }
